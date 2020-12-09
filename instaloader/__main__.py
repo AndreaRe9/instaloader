@@ -222,14 +222,13 @@ def _main(instaloader: Instaloader, targetlist: List[str],
             # Instaloader did at least save a session file
             instaloader.context.log("No targets were specified, thus nothing has been downloaded.")
         else:
-            # Instloader did not do anything
+            # Instaloader did not do anything
             instaloader.context.log("usage:" + usage_string())
 
 
 def main():
     parser = ArgumentParser(description=__doc__, add_help=False, usage=usage_string(),
-                            epilog="Report issues at https://github.com/instaloader/instaloader/issues. "
-                                   "The complete documentation can be found at "
+                            epilog="The complete documentation can be found at "
                                    "https://instaloader.github.io/.",
                             fromfile_prefix_chars='+')
 
@@ -368,8 +367,8 @@ def main():
                             'connection fails, it can be manually skipped by hitting CTRL+C. Set this to 0 to retry '
                             'infinitely.')
     g_how.add_argument('--commit-mode', action='store_true', help=SUPPRESS)
-    g_how.add_argument('--request-timeout', metavar='N', type=float,
-                       help='seconds to wait before timing out a connection request')
+    g_how.add_argument('--request-timeout', metavar='N', type=float, default=300.0,
+                       help='Seconds to wait before timing out a connection request. Defaults to 300.')
 
     g_misc = parser.add_argument_group('Miscellaneous Options')
     g_misc.add_argument('-q', '--quiet', action='store_true',
